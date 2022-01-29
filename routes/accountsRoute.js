@@ -21,6 +21,7 @@ const verifyAuth = require('../middleware/verifyAuth');
 
 //Register new account
 router.post('/register', fileUpload, (req, res) => {
+    console.log("New account registered")
     bcrypt.hash(req.body.password, parseInt(process.env.PASSWORD_HASH_SALT_PASSES)).then((hashedPassword) => {
         const user = new UserModel()({
             username: req.body.username, 
