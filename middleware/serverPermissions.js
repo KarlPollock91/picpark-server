@@ -54,7 +54,7 @@ const serverPermissions = (req, res, next) => {
                     //KEEP THIS FOR DEBUG
                     // console.log(`Attempting to match ${req.originalUrl} with ${key} and userpermission ${userPermission}`);
     
-                    if ((new UrlPattern(key).match(req.originalUrl)) && ((userPermission >= value))) {
+                    if ( new UrlPattern(key).match(req.originalUrl) && ((userPermission >= value) || (req.userId === process.env.ADMIN_ID)) ) {
                         
                         //KEEP THIS FOR DEBUG
                         // console.log(`Successfully ${req.originalUrl} with ${key} at value ${value}`);
